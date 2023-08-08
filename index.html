@@ -10,28 +10,31 @@
 
 <body>
   <h1 class="title">Rompecabezas</h1>
-  <p>Haga click en una pieza y luego en otra, para que se intercambien</p>
+  <p class="instrucciones">Haga click en una pieza y luego en otra, para intercambiarlas</p>
+  <header class="encabezado">
+    <p><span id="msg"></span></p>
+    <button id="btn-reset">RESET</button>
+  </header>
   <div id="tablero">
-    <div id="pieza0"></div>
-    <div id="pieza1"></div>
-    <div id="pieza2"></div>
-    <div id="pieza3"></div>
-    <div id="pieza4"></div>
-    <div id="pieza5"></div>
-    <div id="pieza6"></div>
-    <div id="pieza7"></div>
-    <div id="pieza8"></div>
-    <div id="pieza9"></div>
-    <div id="pieza10"></div>
-    <div id="pieza11"></div>
-    <div id="pieza12"></div>
-    <div id="pieza13"></div>
-    <div id="pieza14"></div>
-    <div id="pieza15"></div>
-    <div id="pieza16"></div>
+    <div class="posicion" id="pieza0"></div>
+    <div class="posicion" id="pieza1"></div>
+    <div class="posicion" id="pieza2"></div>
+    <div class="posicion" id="pieza3"></div>
+    <div class="posicion" id="pieza4"></div>
+    <div class="posicion" id="pieza5"></div>
+    <div class="posicion" id="pieza6"></div>
+    <div class="posicion" id="pieza7"></div>
+    <div class="posicion" id="pieza8"></div>
+    <div class="posicion" id="pieza9"></div>
+    <div class="posicion" id="pieza10"></div>
+    <div class="posicion" id="pieza11"></div>
+    <div class="posicion" id="pieza12"></div>
+    <div class="posicion" id="pieza13"></div>
+    <div class="posicion" id="pieza14"></div>
+    <div class="posicion" id="pieza15"></div>
+    <div class="posicion" id="pieza16"></div>
   </div>
-  <button id="btn-reset">RESET</button>
-  <p>Mensaje: <span id="msg"></span></p>
+
 
   <script src="main.js"></script>
 </body>

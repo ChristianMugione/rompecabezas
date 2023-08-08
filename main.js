@@ -1,13 +1,20 @@
 /* */
 const tablero = document.getElementById("tablero");
 const btnReset = document.getElementById("btn-reset");
-const msg = document.getElementById("msg");
 btnReset.addEventListener("click", reset);
+const msg = document.getElementById("msg");
 
+let numA;
+let numB;
 let piezaA = "";
 let piezaB = "";
-
+let gameOn = true;
 let coordsImg = [];
+coordsImg[0] = [0, 0, 0];
+let tiempoIni;
+let tiempoTotal;
+let intercambios;
+
 function inicializarPiezas() {
   let numero = 1;
   coordsImg[0] = [0, 0, 0];
@@ -21,7 +28,7 @@ function inicializarPiezas() {
     }
   }
 }
-inicializarPiezas();
+// inicializarPiezas();
 
 function imprimirPiezas() {
   let pos = 0;
@@ -47,6 +54,8 @@ function numberToId(num) {
 
 function intercambiarPiezas(a, b) {
   [coordsImg[a], coordsImg[b]] = [coordsImg[b], coordsImg[a]];
+  intercambios++;
+  msg.textContent = "Movidas: " + intercambios;
 }
 
 function mezclarPiezas() {
@@ -61,14 +70,6 @@ function mezclarPiezas() {
   }
 }
 
-function reset() {
-  mezclarPiezas();
-  imprimirPiezas();
-  piezaA = "";
-  piezaB = "";
-  msg.textContent = "";
-}
-
 function isOver() {
   let control = true;
   let num = 0;
@@ -81,28 +82,54 @@ function isOver() {
   return control;
 }
 
-mezclarPiezas();
-imprimirPiezas();
+function reset() {
+  inicializarPiezas();
+  mezclarPiezas();
+  imprimirPiezas();
 
-let numA;
-let numB;
+  msg.textContent = "";
+  btnReset.textContent = "RESET";
+  btnReset.style.backgroundColor = "red";
+
+  tiempoIni = Date.now();
+  tiempoTotal = 0;
+  intercambios = 0;
+
+  gameOn = true;
+}
+
+reset();
 
 tablero.addEventListener("click", (e) => {
-  if (piezaA === "") {
-    document.getElementById(e.target.id).style.border = "1px solid red";
-    piezaA = e.target.id;
-    numA = idToNumber(piezaA);
-  } else if (piezaB === "") {
-    document.getElementById(e.target.id).style.border = "1px solid red";
-    piezaB = e.target.id;
-    numB = idToNumber(piezaB);
-    intercambiarPiezas(numA, numB);
-    imprimirPiezas();
-    if (isOver() == true) {
-      msg.textContent = "ganaste";
-      // ACA HAY QUE HACER ALGO MAS
+  if (gameOn === true) {
+    if (piezaA === "") {
+      document.getElementById(e.target.id).style.border = "1px solid red";
+      piezaA = e.target.id;
+      numA = idToNumber(piezaA);
+    } else if (piezaB === "") {
+      document.getElementById(e.target.id).style.border = "1px solid red";
+      piezaB = e.target.id;
+      numB = idToNumber(piezaB);
+      intercambiarPiezas(numA, numB);
+      imprimirPiezas();
+
+      if (isOver() == true) {
+        gameOn = false;
+        tiempoTotal = Math.trunc((Date.now() - tiempoIni) / 1000);
+        msg.textContent =
+          "FIN! " + intercambios + " intercambios | " + tiempoTotal + " seg";
+        btnReset.textContent = "INICIAR";
+        btnReset.style.backgroundColor = "green";
+      }
+      piezaA = "";
+      piezaB = "";
     }
-    piezaA = "";
-    piezaB = "";
   }
 });
+
+/**
+ * To do:
+ * - mostrar imagen completa mientras se juega
+ * - puntaje
+ * - high scores
+ */

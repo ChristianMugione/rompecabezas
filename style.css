@@ -3,31 +3,68 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  font-size: 18px;
 }
 
 body {
+  font-size: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #ccf;
+}
+
+.encabezado {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 0.5em;
+}
+
+.instrucciones {
+  text-align: center;
+  font-size: 0.5em;
+}
+
+#btn-reset {
+  font-size: 1em;
+  font-weight: 400;
+  color: aliceblue;
+  padding: 2px 5px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
 }
 
 #tablero {
   width: 400px;
+  height: 400px;
+  position: relative;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
+  background-color: white;
+  box-shadow: 0 0 0 5px blue;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 
 #tablero div {
   width: 100px;
   height: 100px;
+  margin: 0;
   border: 1px solid white;
-  background-image: url("./imagen.png");
-  background-size: 400%;
-}
-
-#tablero p {
+  background-size: 400px 400px;
+  background-image: url("front-and-back.png");
 }
 
 #pieza0 {
