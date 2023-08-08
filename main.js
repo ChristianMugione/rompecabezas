@@ -87,7 +87,7 @@ function reset() {
   mezclarPiezas();
   imprimirPiezas();
 
-  msg.textContent = "";
+  msg.textContent = "JUEGO INICIADO!";
   btnReset.textContent = "RESET";
   btnReset.style.backgroundColor = "red";
 
